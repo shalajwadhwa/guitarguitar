@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Customer(models.Model):
-    customer_id = models.IntegerField()
+    customer_id = models.IntegerField(unique=True)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
     email = models.EmailField(max_length=256)
@@ -15,7 +15,7 @@ class Customer(models.Model):
         return "{0}: {1} {2}".format(self.id, self.first_name, self.last_name)
 
 class Orders(models.Model):
-    order_id = models.IntegerField()
+    order_id = models.IntegerField(unique=True)
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
     shipping_address = models.JSONField()
     products = models.JSONField()
@@ -27,7 +27,7 @@ class Orders(models.Model):
         return "{0}: {1}".format(self.order_id, self.customer_id)
 
 class Products(models.Model):
-    sku_id = models.CharField(max_length=15)
+    sku_id = models.CharField(max_length=15, unique=True)
     asn = models.CharField(max_length=12)
     category = models.CharField(max_length=10)
     online = models.BooleanField()
@@ -41,7 +41,6 @@ class Products(models.Model):
     qty_on_order = models.IntegerField()
     colour_option = models.IntegerField()
     pickup_option = models.IntegerField()
-    shape_option = models.IntegerField()
     created_on = models.DateField()
     body_shape = models.IntegerField()
 
