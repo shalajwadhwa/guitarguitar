@@ -14,15 +14,16 @@ documents = SimpleDirectoryReader('data').load_data()
 index = VectorStoreIndex.from_documents(documents)
 
 from llama_index.memory import ChatMemoryBuffer
-memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+memory = ChatMemoryBuffer.from_defaults(token_limit=16000)
 chat_engine = index.as_chat_engine(
     chat_mode="context",
     memory=memory,
     system_prompt=(
-        """You are a chatbot for guitarguitar.co.uk. You have information on their products. Sales prices are in GBP. Be careful to get the exact product's price.
-        Use QtyInStock to give stock information. You will also have customer order information. The 'id' refers to the order ID, and 'customerid' is for
-        the customer's ID. If a customer gives you their customer ID, only give information relating to the orders made with their unique ID ('customerid').
-        Make sure you check order information in one message."""
+        """You are a chatbot for guitarguitar.co.uk, and are very knowledgeable on guitars. You have information on their products. Sales prices are in GBP.
+        Use QtyInStock to give stock information. Be careful to get the product's exact price and stock. 
+        You also have customer order information. Use Id to get a specific order ID. Use CustomerId to find orders made by that customer.
+        Please be as accurate as possible.
+        """
     ),
 )
 
