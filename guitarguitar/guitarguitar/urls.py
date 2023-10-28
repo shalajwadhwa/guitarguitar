@@ -7,5 +7,6 @@ urlpatterns = [
     path("orders/", views.orders, name="orders"),
     path("chat/", views.chat, name='chat'),
     path("team20/", include("team20.urls")),
+    path('accounts/', include('registration.backends.simple.urls')),
     path("admin/", admin.site.urls),
 ]

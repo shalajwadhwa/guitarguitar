@@ -1,0 +1,26 @@
+{% extends 'team20/base.html' %}
+{% block title_block %}
+    Login
+{% endblock %}
+{% block contextual %}
+    <div class="row w-75 mx-auto align-items-center mt-5">
+        <div class="row gy-4 mx-auto">
+            <div class="row mt-5"></div>
+            <div class="row mt-5"></div>
+            <h1>Sign in to myguitarguitar</h1>
+            <form method="post" action=".">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <p class="required">
+                    <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Username">
+                </p>
+                <p class="required">
+                    <input type="password" name="password" autocomplete="current-password" required="" id="id_password" placeholder="Password">
+                </p>
+                <input type="submit" value="Sign in" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>    
+            <div class="g-5"></div>
+        </div>
+    </div>
+{% endblock %}

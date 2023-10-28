@@ -1,6 +1,12 @@
 from django.db import models
+from django.conf import settings
+
 
 # Create your models here.
+def uid_path(instance, filename):
+    return "user_{0}/{1}".format(instance.user.id, filename)
+
+
 class Customer(models.Model):
     customer_id = models.IntegerField(unique=True)
     first_name = models.CharField(max_length=256)
@@ -12,7 +18,8 @@ class Customer(models.Model):
     loyalty_level = models.IntegerField()
 
     def __str__(self):
-        return "{0}: {1} {2}".format(self.id, self.first_name, self.last_name)
+        return "{0}: {1} {2}".format(self.customer_id, self.first_name, self.last_name)
+
 
 class Orders(models.Model):
     order_id = models.IntegerField(unique=True)
@@ -25,6 +32,7 @@ class Orders(models.Model):
 
     def __str__(self):
         return "{0}: {1}".format(self.order_id, self.customer_id)
+
 
 class Products(models.Model):
     sku_id = models.CharField(max_length=15, unique=True)
@@ -46,3 +54,11 @@ class Products(models.Model):
 
     def __str__(self):
         return "{0}: {1}".format(self.sku_id, self.item_name)
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user_customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)

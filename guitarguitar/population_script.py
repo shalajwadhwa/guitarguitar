@@ -2,13 +2,14 @@ import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'guitarguitar.settings')
 import django
 django.setup()
-
+from django.db.models import Q
+from django.conf import settings
 from datetime import datetime
 import json
 import requests
-
-from team20.models import Customer, Orders, Products
-
+from django.contrib.auth import get_user_model
+from team20.models import Customer, UserProfile, Orders, Products
+User = get_user_model()
 ## Scrape the data from the given urls
 def scrape_info(url):
     res = requests.get(url)
@@ -29,6 +30,21 @@ def populate():
             loyalty_level=customer['LoyaltyLevel']
         )[0]
         cust.save()
+
+        user = User.objects.create_user(
+            username=str(customer["Id"]),
+            email=customer["email"],
+            first_name=customer["first_name"],
+            last_name=customer["last_name"],
+            password="password",
+        )
+        user.save()
+
+        user_profile = UserProfile.objects.create(
+            user=user,
+            user_customer=cust,
+        )
+        user_profile.save()
 
     for order in scrape_info('https://guitarguitar.co.uk/hackathon/orders/'):
         #  date is in format “2021-08-15T05:52:00” so need to convert to date

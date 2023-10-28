@@ -28,6 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REGISTRATION_OPEN = True
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = 'orders'
+LOGIN_URL = 'auth_login'
+
 
 # Application definition
 
@@ -38,7 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "team20"
+    "team20",
+    "registration",
 ]
 
 MIDDLEWARE = [
