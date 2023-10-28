@@ -1,0 +1,122 @@
+.options-cont {
+	height: 48vh;
+}
+.site-name {
+	font-size: 4.0em;
+}
+.subject-text {
+	font-size: 2.5em;
+}
+.home-text {
+	font-size: 2.5em;
+}
+.home-option-cont {
+    padding-left: 20%;
+	padding-right: 20%;
+}
+.home-option {
+	font-size: 2.0em;
+}
+.sym-text {
+	font-size: 8.0em;
+}
+.home-link {
+	color: black;
+	text-decoration: none;
+}
+.index-container {
+	padding: 0% 7.5%;
+}
+.chat-container {
+	padding: 0% 7.5%;
+}
+.chat-controls-container {
+	padding: 0% 7.5%;
+}
+.answer-text {
+	padding: 2% 2%;
+	color: white;
+	font-size: 2.0em;
+}
+.query-text {
+	padding: 2% 2%;
+	font-size: 2.0em;
+}
+.chat-container-card {
+	padding: 2% 0%;
+}
+.query-box-card {
+	padding: 0% 2%;
+	margin-bottom: 2%;
+}
+.querybox {
+	background-color: whitesmoke;
+	font-size: 2.0em;
+	height: 5vw;
+	border: none;
+	border-radius: 1vw;
+	padding: 2% 2%;
+}
+input[class="form-txt-field w-100"] {
+	background-color: whitesmoke;
+	font-size: 2.0em;
+	height: 5vw;
+	border: none;
+	border-radius: 1vw;
+	padding: 2% 2%;
+}
+select[class="form-drop-field w-100"] {
+	background-color: whitesmoke;
+	font-size: 2.0em;
+	height: 5vw;
+	border: none;
+	border-radius: 1vw;
+	padding: 2% 2%;
+}
+.submit-btn {
+	font-size: 2.0em;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+.chat-button {
+	font-size: 2.0em;
+	height: 5vw;
+	border: none;
+	border-radius: 1vw;
+}
+.center-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.topbar {
+	padding: 2% 0%;
+}
+@keyframes fade {
+   from {
+       opacity: 0;
+   }
+
+   to {
+       opacity: 1;
+   }
+}
+@keyframes	slide {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+body {
+	animation: fade 0.75s;
+}
+.answer-bubble {
+	background-color: dodgerblue;
+	animation: fade 0.5s, slide 0.5s;
+}
+.query-bubble {
+	animation: fade 0.5s, slide 0.5s;
+}
