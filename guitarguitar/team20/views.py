@@ -2,6 +2,7 @@ from django.shortcuts import render
 import os
 import urllib
 from django.views import View
+from team20.models import Products
 
 OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 from langchain.chains.conversation.memory import ConversationBufferMemory
@@ -15,9 +16,17 @@ def initialise_chat(initial_data):
         print("No initial data")
         return
 
-    init_string = """The following is an AI companion that is an expert on guitars.
+    # products = Products.objects.all()
+    product_list = []
 
-	Current Conversation:
+    for product in Products.objects.all()[:50]:
+        print(product)
+        product_list.append(str(product))
+
+
+    init_string = """The following is an AI companion that is an expert on guitars. It always separates lists of products with newline characters after each product and does not give a number before each product.
+    Here is all the data on the products available at GuitarGuitar. Use this data to help the customer get the right guitar that is sold at GuitarGuitar using your expertise for their request:
+    """ + "".join(product_list) + """Current Conversation:
 	{history}
 	Human: {input}
 	AI Assistant:"""
