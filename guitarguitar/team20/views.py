@@ -45,6 +45,9 @@ def index(request):
 def chat(request):
     return render(request, "team20/chat.html", context={})
 
+def orders(request):
+    context_dict = {}
+    return render(request, "team20/orders.html", context=context_dict)
 
 class answer(View):
     def get(self, request):
