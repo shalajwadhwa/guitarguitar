@@ -53,7 +53,7 @@ class Products(models.Model):
     body_shape = models.IntegerField()
 
     def __str__(self):
-        return "(qualities for {0}: category: '{1}', online: '{2}', item name: '{3}', brand name: '{4}', description: '{5}', product detail: '{6}', sales price: '{7}', quantity in stock: '{8}', quantity on order: '{9}', colour options: '{10}', pickup options: '{11}', created on: '{12}', body shape: '{13}') ".format(self.sku_id, self.category, self.online, self.item_name, self.brand_name, self.description, self.product_detail, self.sales_price, self.qty_in_stock, self.qty_on_order, self.colour_option, self.pickup_option, self.created_on, self.body_shape)
+        return "(online: '{2}', item name: '{3}', brand name: '{4}', sales price: '{7}', quantity in stock: '{8}', quantity on order: '{9}', colour options: '{10}', pickup options: '{11}', body shape: '{13}') ".format(None, None, self.online, self.item_name, self.brand_name, None, None, self.sales_price, self.qty_in_stock, self.qty_on_order, self.colour_option, self.pickup_option, None, self.body_shape)
 
 
 class UserProfile(models.Model):
