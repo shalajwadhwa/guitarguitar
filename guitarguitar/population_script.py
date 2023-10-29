@@ -51,9 +51,10 @@ def populate():
         date_created = order['DateCreated'].split('T')[0]
         # convert date_created to python date object
         date_created = datetime.strptime(date_created, '%Y-%m-%d').date()
+        customer = Customer.objects.get(customer_id=order['CustomerId'])
         ord = Orders.objects.get_or_create(
             order_id=order['Id'],
-            customer_id=Customer.objects.get(customer_id=order['CustomerId']),
+            customer_id=customer.customer_id,
             shipping_address=order['ShippingAddress'],
             products=order['Products'],
             date_created=date_created,
