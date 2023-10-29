@@ -21,7 +21,7 @@
 	font-size: 8.0em;
 }
 .home-link {
-	color: black;
+	color: #ec671b;
 	text-decoration: none;
 }
 .index-container {
@@ -83,6 +83,11 @@ select[class="form-drop-field w-100"] {
 	height: 5vw;
 	border: none;
 	border-radius: 1vw;
+	background-color: #ec671b;
+
+}
+.chat-button:hover {
+	background-color: #9e481c;
 }
 .center-text {
 	display: flex;
@@ -114,7 +119,7 @@ body {
 	animation: fade 0.75s;
 }
 .answer-bubble {
-	background-color: dodgerblue;
+	background-color: #ec671b;
 	animation: fade 0.5s, slide 0.5s;
 }
 .query-bubble {
