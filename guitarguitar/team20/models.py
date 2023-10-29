@@ -8,7 +8,7 @@ def uid_path(instance, filename):
 
 
 class Customer(models.Model):
-    customer_id = models.IntegerField(unique=True)
+    customer_id = models.IntegerField(unique=True,primary_key=True)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
     email = models.EmailField(max_length=256)

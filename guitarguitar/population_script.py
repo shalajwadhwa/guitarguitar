@@ -54,7 +54,7 @@ def populate():
         customer = Customer.objects.get(customer_id=order['CustomerId'])
         ord = Orders.objects.get_or_create(
             order_id=order['Id'],
-            customer_id=customer.customer_id,
+            customer_id=customer,
             shipping_address=order['ShippingAddress'],
             products=order['Products'],
             date_created=date_created,
